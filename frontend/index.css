@@ -1,13 +1,24 @@
+.container {
+    padding: 0 48px 0 48px;
+}
+
 #msg-area {
-    height: 400px;
+    height: 214px;
+    overflow: hidden;
+}
+
+#online-users {
+    height: 38rem;
     overflow: hidden;
 }
 
 .main {
-    height: 100%;
+    height: 380px;
     overflow-y: auto;
+    padding : 15px 15px 25px 15px ;
 }
 
+/* Hide scrollbar */
 .main::-webkit-scrollbar {
     display: none;
 }
@@ -16,6 +27,7 @@ body {
     width: 100vw;
 }
 
+/* Message list */
 #message {
     list-style: none;
     padding: 0;
@@ -31,15 +43,7 @@ body {
     font-size: 18px;
 }
 
-#msg-area {
-    height: 23rem;
-}
-
-#text-area {
-    height: 5rem;
-}
-
-
+/* My messages */
 .my-message {
     text-align: right;
     background: #0d6efd;
@@ -47,9 +51,11 @@ body {
     padding: 8px 12px;
     margin: 8px 0 8px auto;
     width: fit-content;
+    max-width: 70%;
     border-radius: 10px;
 }
 
+/* Other user's messages */
 .other-message {
     text-align: left;
     background: #e9ecef;
@@ -57,5 +63,11 @@ body {
     padding: 8px 12px;
     margin: 8px auto 8px 0;
     width: fit-content;
+    max-width: 70%;
     border-radius: 10px;
+}
+
+/* Message input area */
+#text-area {
+    height: 5rem;
 }

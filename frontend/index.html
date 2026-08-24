@@ -4,63 +4,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Socket.io</title>
+    <title>Socket.io Chat</title>
     <link rel="stylesheet" href="index.css">
-
-    <!-- bootstrap CSS CDN link  -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body class="bg-body-secondary">
-    <div class="container p-5 m-5">
-        <h1 class="text-center">chats</h1>
+    <div class="container">
+
+        <h1 class="text-center">Chating Meetup</h1>
         <hr>
-        <div class="row shadow p-3 mb-5 bg-body-tertiary rounded" id="msg-area">
-            <!-- main chart container -->
-            <div class="col-8 main">
-                <div class="input-group mb-3">
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="username"
-                        placeholder="Enter your name"
-                    >
-                    <button class="btn btn-success" id="join">Join</button>
+
+        <div class="row">
+
+            <!-- ONLINE USERS -->
+            <div class="col-3">
+                <div class="shadow p-3 bg-body-tertiary rounded" id="online-users">
+                    <h4>Online Users</h4>
+                    <hr>
+                    <ul id="onlineUsers"></ul>
+                </div>
+            </div>
+
+            <!-- CHAT -->
+            <div class="col-9">
+                <div class="shadow p-3 mb-3 bg-body-tertiary rounded" id="msg-area">
+
+                    <!-- NAME -->
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="username" placeholder="Enter your name">
+                    </div>
+
+                    <!-- ROOM -->
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="room" placeholder="Enter room name">
+                        <button class="btn btn-warning" id="joinRoom">
+                            Join Room
+                        </button>
+                    </div>
+
+                    <!-- JOIN CHAT -->
+                    <button class="btn btn-success ms-2 mb-3" id="join" disabled>
+                        Join Chat
+                    </button>
+
+                    <!-- Leave CHAT -->
+                    <button class="btn btn-danger ms-3 mb-3" id="leave" disabled>
+                        Leave Chat
+                    </button>
+    
                 </div>
                 
-                <ul id="message"></ul>
-            </div>
-        </div>
-
-        <!-- message text area  -->
-        <div class="row shadow p-3 mb-5 bg-body-tertiary rounded text-center" id="text-area">
-            <div class="input-group mb-3">
-                <div class="col-1 ps-5"></div>
-                <div class="col-9 d-flex">
-                    <input type="text" class="form-control ms-5" aria-label="Sizing example input" placeholder="Enter Message......"
-                aria-describedby="inputGroup-sizing-default" id="input">
-                <button class="btn btn-primary ms-5" id="send">Send.</button>
+                <!-- MESSAGES -->
+                <div class="main overflow-auto shadow bg-body-tertiary rounded">
+                    <ul id="message"></ul>
+                    <div id="typing"></div>
                 </div>
+            </div>
 
-                <div class="col-1"></div>
+        </div>
 
+        <!-- MESSAGE INPUT -->
+        <div class="shadow p-3 mt-4 bg-body-tertiary rounded" id="text-area">
+            <div class="input-group">
+                <input type="text" class="form-control" id="input" placeholder="Enter Message......" disabled>
+                <button class="btn btn-primary" id="send" disabled>
+                    Send
+                </button>
             </div>
         </div>
 
-        <footer class="text-center">2026 @ all-Rights are reserved</footer>
+        <footer class="text-center mt-4">
+            @ created by Yuvaraj Wagyagol.
+        </footer>
+
     </div>
 
-    <!-- bootstrap JS CDN link  -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
-
-    <!-- connect to socket.io  -->
     <script src="/socket.io/socket.io.js"></script>
-
-    <!-- clint side  -->
     <script src="index.js"></script>
+
 </body>
 
 </html>
